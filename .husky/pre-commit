@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+
+docker run --rm \
+  -v "$(pwd):$(pwd)" \
+  -w "$(pwd)" \
+  rhysd/actionlint:latest
