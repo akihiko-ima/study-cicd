@@ -1,7 +1,8 @@
 name: Test
-on:
-    pull_request: # プルリクエストが作成されたら起動
-        paths: ["go/**/*.go"] # ただしGoのファイル変更時のみ
+# on:
+#     pull_request: # プルリクエストが作成されたら起動
+#         paths: ["go/**/*.go"] # ただしGoのファイル変更時のみ
+on: push
 jobs:
     test:
         runs-on: ubuntu-latest
