@@ -9,7 +9,7 @@
 
 ## コマンド
 
-### huskyの自動設定
+#### huskyの自動設定
 
 `chmod +x .husky/pre-commit`も必要
 
@@ -29,4 +29,30 @@ docker run --rm -v "$(pwd):$(pwd)" -w "$(pwd)" rhysd/actionlint:latest
 
 ```bash
 go test go/excellent/*.go
+```
+
+## コンテナレジストリー
+
+- アカウント名の環境変数へセット
+
+```bash
+export GHCR_USER=$(gh config get -h github.com user)
+```
+
+- コンテナイメージのビルド
+
+```bash
+docker build -t ghcr.io/${GHCR_USER}/example:latest docker/example/
+```
+
+- Container Registryへログイン
+
+```bash
+gh auth token | docker login ghcr.io -u ${GHCR_USER} --password-stdin
+```
+
+- コンテナイメージをpush
+
+```bash
+docker push ghcr.io/${GHCR_USER}/example:latest
 ```
